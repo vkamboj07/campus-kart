@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusKart - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-content">
+                <span class="promo-text">Back to college sale upto 50% OFF on your first rent!</span>
+                <div class="top-header-right">
+                    <span class="rent-now">Rent Now</span>
+                    <div class="language-selector">
+                        <span>English</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>CampusKart</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="singnup.html">Sign Up</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <input type="text" placeholder="What are you looking for?">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <div class="header-icons">
+                        <a href="./wishlist.html" style="text-decoration: none;">                        
+                            <span class="icon">❤️</span>
+                        </a>
+                        <span class="icon">🛒</span>
+                        <div class="profile-dropdown">
+                            <span class="icon profile-icon">👤</span>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">
+                                    <span class="dropdown-icon">👤</span>
+                                    Manage My Account
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <span class="dropdown-icon">📦</span>
+                                    My Order
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <span class="dropdown-icon">❌</span>
+                                    My Cancellations
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <span class="dropdown-icon">⭐</span>
+                                    My Reviews
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <span class="dropdown-icon">🚪</span>
+                                    Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Category Dropdown -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="category-sidebar">
+                    <h3>Category Dropdown</h3>
+                    <ul class="category-list">
+                        <li class="category-item active">
+                            <span>Music Instruments</span>
+                            <span class="arrow">→</span>
+                        </li>
+                        <li class="category-item">
+                            <span>Stationery</span>
+                            <span class="arrow">→</span>
+                        </li>
+                        <li class="category-item">
+                            <span>Electronics</span>
+                        </li>
+                        <li class="category-item">
+                            <span>Home & Lifestyle</span>
+                        </li>
+                        <li class="category-item">
+                            <span>Skin Care</span>
+                        </li>
+                        <li class="category-item">
+                            <span>Sports & Outdoor</span>
+                        </li>
+                        <li class="category-item">
+                            <span>Gadgets</span>
+                        </li>
+                        <li class="category-item">
+                            <span>Games</span>
+                        </li>
+                        <li class="category-item">
+                            <span>Health & Beauty</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="hero-banner">
+                    <div class="banner-content">
+                        <div class="banner-text">
+                            <h4>Music Instruments</h4>
+                            <h2>Up to 10% off Music insturments</h2>
+                            <a href="#" class="rent-link">Rent now →</a>
+                        </div>
+                        <div class="banner-dots">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flash Sales Section -->
+    <section class="flash-sales">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="red-bar"></div>
+                    <h2>Flash Sales</h2>
+                </div>
+                <div class="countdown-timer">
+                    <div class="timer-item">
+                        <span id="days"  class="timer-number">00</span>
+                        <span class="timer-label">Days</span>
+                    </div>
+                    <div class="timer-separator">:</div>
+                    <div class="timer-item">
+                        <span id="hours" class="timer-number">00</span>
+                        <span class="timer-label">Hours</span>
+                    </div>
+                    <div class="timer-separator">:</div>
+                    <div class="timer-item">
+                        <span id="minutes" class="timer-number">00</span>
+                        <span class="timer-label">Minutes</span>
+                    </div>
+                    <div class="timer-separator">:</div>
+                    <div class="timer-item">
+                        <span id="seconds" class="timer-number">00</span>
+                        <span class="timer-label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="products-container">
+                <button class="nav-arrow left">‹</button>
+                <div class="products-grid">
+                    <!-- <div class="product-card">
+                        <div class="product-badge">-40%</div>
+                        <div class="product-icons">
+                            <span class="icon">❤️</span>
+                            <span class="icon">👁️</span>
+                        </div>
+                        <div class="product-image red-controller"></div>
+                        <h3>HAVIT HV-G92 Gamepad</h3>
+                        <div class="product-price">
+                            <span class="current-price">₹120</span>
+                            <span class="original-price">₹160</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(8)</span>
+                        </div>
+                        <button class="add-to-cart">Add To Cart</button>
+                    </div> -->
+                        <div class="product-card" data-id="1">
+                            <div class="product-badge"></div>
+                            <div class="product-icons">
+                                <i class="fas fa-heart icon wishlist-btn"></i>
+                                <span class="icon view-btn">👁️</span>
+                            </div>
+                            <div class="product-image"></div>
+                            <h3></h3>
+                            <div class="product-price">
+                                <span class="current-price"></span>
+                                <span class="original-price"></span>
+                            </div>
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-count"></span>
+                            </div>
+                            <button class="add-to-cart">Add To Cart</button>
+                        </div>
+                        
+                        <!-- <div class="product-card">
+                        <div class="product-badge">-35%</div>
+                        <div class="product-icons">
+                            <span class="icon">❤️</span>
+                            <span class="icon">👁️</span>
+                        </div>
+                        <div class="product-image rgb-keyboard"></div>
+                        <h3>AK-900 Wired Keyboard</h3>
+                        <div class="product-price">
+                            <span class="current-price">₹960</span>
+                            <span class="original-price">₹1160</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(75)</span>
+                        </div>
+                        <button class="add-to-cart">Add To Cart</button>
+                    </div> -->
+                        <div class="product-card" data-id="2">
+                            <div class="product-badge"></div>
+                            <div class="product-icons">
+                                <i class="fas fa-heart icon wishlist-btn"></i>
+                                <span class="icon view-btn">👁️</span>
+                            </div>
+                            <div class="product-image"></div>
+                            <h3></h3>
+                            <div class="product-price">
+                                <span class="current-price"></span>
+                                <span class="original-price"></span>
+                            </div>
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-count"></span>
+                            </div>
+                            <button class="add-to-cart">Add To Cart</button>
+                        </div>
+                    
+                    <!-- <div class="product-card">
+                        <div class="product-badge">-30%</div>
+                        <div class="product-icons">
+                            <span class="icon">❤️</span>
+                            <span class="icon">👁️</span>
+                        </div>
+                        <div class="product-image gaming-monitor"></div>
+                        <h3>IPS LCD Gaming Monitor</h3>
+                        <div class="product-price">
+                            <span class="current-price">₹370</span>
+                            <span class="original-price">₹400</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(99)</span>
+                        </div>
+                        <button class="add-to-cart">Add To Cart</button>
+                    </div> -->
+
+                    <div class="product-card" data-id="3">
+                            <div class="product-badge"></div>
+                            <div class="product-icons">
+                                <i class="fas fa-heart icon wishlist-btn"></i>
+                                <span class="icon view-btn">👁️</span>
+                            </div>
+                            <div class="product-image"></div>
+                            <h3></h3>
+                            <div class="product-price">
+                                <span class="current-price"></span>
+                                <span class="original-price"></span>
+                            </div>
+                            <div class="product-rating">
+                                <span class="stars">★★★★</span>
+                                <span class="rating-count"></span>
+                            </div>
+                            <button class="add-to-cart">Add To Cart</button>
+                        </div>
+                    
+                    <!-- <div class="product-card">
+                        <div class="product-badge">-25%</div>
+                        <div class="product-icons">
+                            <span class="icon">❤️</span>
+                            <span class="icon">👁️</span>
+                        </div>
+                        <div class="product-image comfort-chair"></div>
+                        <h3>S-Series Comfort Chair</h3>
+                        <div class="product-price">
+                            <span class="current-price">₹375</span>
+                            <span class="original-price">₹400</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(99)</span>
+                        </div>
+                        <button class="add-to-cart">Add To Cart</button>
+                    </div> -->
+
+                        <div class="product-card" data-id="4">
+                            <div class="product-badge"></div>
+                            <div class="product-icons">
+                                <i class="fas fa-heart icon wishlist-btn"></i>
+                                <span class="icon view-btn">👁️</span>
+                            </div>
+                            <div class="product-image"></div>
+                            <h3></h3>
+                            <div class="product-price">
+                                <span class="current-price"></span>
+                                <span class="original-price"></span>
+                            </div>
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-count"></span>
+                            </div>
+                            <button class="add-to-cart">Add To Cart</button>
+                        </div>
+
+                        <div class="product-card" data-id="1">
+                            <div class="product-badge"></div>
+                            <div class="product-icons">
+                                <i class="fas fa-heart icon wishlist-btn"></i>
+                                <span class="icon view-btn">👁️</span>
+                            </div>
+                            <div class="product-image"></div>
+                            <h3></h3>
+                            <div class="product-price">
+                                <span class="current-price"></span>
+                                <span class="original-price"></span>
+                            </div>
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-count"></span>
+                            </div>
+                            <button class="add-to-cart">Add To Cart</button>
+                        </div>
+                </div>
+                <button class="nav-arrow right">›</button>
+            </div>
+            
+            <div class="view-all-container">
+                <a href="./wishlist.html">
+                <button class="view-all-btn">View Wishlist</button></a>
+                <button class="view-all-btn">View All Products</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Browse By Category Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="red-bar"></div>
+                    <span class="categories-label">Categories</span>
+                    <h2>Browse By Category</h2>
+                </div>
+            </div>
+            
+            <div class="categories-container">
+                <button class="nav-arrow left">‹</button>
+                <div class="categories-grid">
+                    <div class="category-item">
+                        <div class="category-icon">📱</div>
+                        <span>Phones</span>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-icon">💻</div>
+                        <span>Computers</span>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-icon">⌚</div>
+                        <span>SmartWatch</span>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-icon">📷</div>
+                        <span>Camera</span>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-icon">🎧</div>
+                        <span>HeadPhones</span>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-icon">🎮</div>
+                        <span>Gaming</span>
+                    </div>
+                </div>
+                <button class="nav-arrow right">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Selling Products Section -->
+    <section class="best-selling">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="red-bar"></div>
+                    <span class="this-month">This Month</span>
+                    <h2>Best Selling Products</h2>
+                </div>
+                <button class="view-all-btn">View All</button>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icons">
+                        <span class="icon">❤️</span>
+                        <span class="icon">👁️</span>
+                    </div>
+                    <div class="product-image pink-hoodie"></div>
+                    <h3>The north coat</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹260</span>
+                        <span class="original-price">₹360</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(65)</span>
+                    </div>
+                    <button class="add-to-cart">Add To Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icons">
+                        <span class="icon">❤️</span>
+                        <span class="icon">👁️</span>
+                    </div>
+                    <div class="product-image gucci-bag"></div>
+                    <h3>Gucci duffle bag</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹960</span>
+                        <span class="original-price">₹1160</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(65)</span>
+                    </div>
+                    <button class="add-to-cart">Add To Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icons">
+                        <span class="icon">❤️</span>
+                        <span class="icon">👁️</span>
+                    </div>
+                    <div class="product-image rgb-cooler"></div>
+                    <h3>RGB liquid CPU Cooler</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹160</span>
+                        <span class="original-price">₹170</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(65)</span>
+                    </div>
+                    <button class="add-to-cart">Add To Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icons">
+                        <span class="icon">❤️</span>
+                        <span class="icon">👁️</span>
+                    </div>
+                    <div class="product-image bookshelf"></div>
+                    <h3>Small BookSelf</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹360</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(65)</span>
+                    </div>
+                    <button class="add-to-cart">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Party Banner Section -->
+    <section class="party-banner">
+        <div class="container">
+            <div class="party-banner-content">
+                <div class="party-text">
+                    <h4>Categories</h4>
+                    <h2>Get your party going!!!</h2>
+                    <div class="countdown-timer">
+                        <div class="timer-item">
+                            <span class="timer-number">23</span>
+                            <span class="timer-label">Hours</span>
+                        </div>
+                        <div class="timer-item">
+                            <span class="timer-number">05</span>
+                            <span class="timer-label">Days</span>
+                        </div>
+                        <div class="timer-item">
+                            <span class="timer-number">59</span>
+                            <span class="timer-label">Minutes</span>
+                        </div>
+                        <div class="timer-item">
+                            <span class="timer-number">35</span>
+                            <span class="timer-label">Seconds</span>
+                        </div>
+                    </div>
+                    <button class="rent-now-btn">Rent Now!</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Our Products Section -->
+    <section class="explore-products">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <div class="red-bar"></div>
+                    <span class="our-products">Our Products</span>
+                    <h2>Explore Our Products</h2>
+                </div>
+                <div class="nav-arrows">
+                    <button class="nav-arrow left">‹</button>
+                    <button class="nav-arrow right">›</button>
+                </div>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icons">
+                        <span class="icon">❤️</span>
+                        <span class="icon">👁️</span>
+                    </div>
+                    <div class="product-image dog-food"></div>
+                    <h3>Breed Dry Dog Food</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹100</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(35)</span>
+                    </div>
+                    <button class="add-to-cart">Add To Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icons">
+                        <span class="icon">❤️</span>
+                        <span class="icon">👁️</span>
+                    </div>
+                    <div class="product-image dslr-camera"></div>
+                    <h3>CANON EOS DSLR Camera</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹360</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(95)</span>
+                    </div>
+                    <button class="add-to-cart">Add To Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icons">
+                        <span class="icon">❤️</span>
+                        <span class="icon">👁️</span>
+                    </div>
+                    <div class="product-image gaming-laptop"></div>
+                    <h3>ASUS FHD Gaming Laptop</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹700</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(825)</span>
+                    </div>
+                    <button class="add-to-cart">Add To Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icons">
+                        <span class="icon">❤️</span>
+                        <span class="icon">👁️</span>
+                    </div>
+                    <div class="product-image curology-set"></div>
+                    <h3>Curology Product Set</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹500</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(145)</span>
+                    </div>
+                    <button class="add-to-cart">Add To Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge new">NEW</div>
+                    <div class="product-icons">
+                        <span class="icon">❤️</span>
+                        <span class="icon">👁️</span>
+                    </div>
+                    <div class="product-image kids-car"></div>
+                    <h3>Kids Electric Car</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹960</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(35)</span>
+                    </div>
+                    <div class="color-options">
+                        <span class="color-dot red"></span>
+                        <span class="color-dot black"></span>
+                    </div>
+                    <button class="add-to-cart">Add To Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icons">
+                        <span class="icon">❤️</span>
+                        <span class="icon">👁️</span>
+                    </div>
+                    <div class="product-image soccer-cleats"></div>
+                    <h3>Jr. Zoom Soccer Cleats</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹1160</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(35)</span>
+                    </div>
+                    <div class="color-options">
+                        <span class="color-dot yellow"></span>
+                        <span class="color-dot red"></span>
+                    </div>
+                    <button class="add-to-cart">Add To Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge new">NEW</div>
+                    <div class="product-icons">
+                        <span class="icon">❤️</span>
+                        <span class="icon">👁️</span>
+                    </div>
+                    <div class="product-image usb-gamepad"></div>
+                    <h3>GPII Shooter USB Gamepad</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹660</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(55)</span>
+                    </div>
+                    <div class="color-options">
+                        <span class="color-dot black"></span>
+                        <span class="color-dot red"></span>
+                    </div>
+                    <button class="add-to-cart">Add To Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icons">
+                        <span class="icon">❤️</span>
+                        <span class="icon">👁️</span>
+                    </div>
+                    <div class="product-image satin-jacket"></div>
+                    <h3>Quilted Satin Jacket</h3>
+                    <div class="product-price">
+                        <span class="current-price">₹660</span>
+                    </div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(55)</span>
+                    </div>
+                    <div class="color-options">
+                        <span class="color-dot black"></span>
+                        <span class="color-dot red"></span>
+                    </div>
+                    <button class="add-to-cart">Add To Cart</button>
+                </div>
+            </div>
+            
+            <div class="view-all-container">
+                <button class="view-all-btn">View All Products</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Items Section -->
+    <section class="premium-items">
+        <div class="container">
+            <div class="section-title">
+                <div class="red-bar"></div>
+                <span class="featured">Featured</span>
+                <h2>Premium Items</h2>
+            </div>
+            
+            <div class="premium-grid">
+                <div class="premium-card ps5-card">
+                    <div class="card-image ps5-image"></div>
+                    <div class="card-content">
+                        <h3>PlayStation 5</h3>
+                        <p>Black and white version of the PS5 coming out on sale.</p>
+                        <button class="rent-now-btn">Rent Now</button>
+                    </div>
+                </div>
+                
+                <div class="premium-card women-card">
+                    <div class="card-image women-image"></div>
+                    <div class="card-content">
+                        <h3>Women's Collections</h3>
+                        <p>Featured woman collections that give you another vibe.</p>
+                        <button class="rent-now-btn">Rent Now</button>
+                    </div>
+                </div>
+                
+                <div class="premium-card speakers-card">
+                    <div class="card-image speakers-image"></div>
+                    <div class="card-content">
+                        <h3>Speakers</h3>
+                        <p>Amazon wireless speakers</p>
+                        <button class="rent-now-btn">Rent Now</button>
+                    </div>
+                </div>
+                
+                <div class="premium-card perfume-card">
+                    <div class="card-image perfume-image"></div>
+                    <div class="card-content">
+                        <h3>Perfume</h3>
+                        <p>GUCCI INTENSE OUD EDP</p>
+                        <button class="rent-now-btn">Rent Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>SECURE CONNECTIONS</h3>
+                    <p>All products are confirmed by us</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎧</div>
+                    <h3>24/7 CUSTOMER SERVICE</h3>
+                    <p>Friendly 24/7 customer support</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>SAFE TRANSACTIONS</h3>
+                    <p>Your money is safe with us :)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top">↑</button>
+
+    <!-- Footer (Unified) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Exclusive</h3>
+                    <p class="footer-subtitle">About Us</p>
+                    <p>We provide the best campus essentials at student-friendly prices.</p>
+                    <p class="footer-subtitle" style="margin-top:16px;">Subscribe</p>
+                    <p>Get 10% off your first order</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Enter your email">
+                        <button aria-label="Send"></button>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <p>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</p>
+                    <p>exclusive@gmail.com</p>
+                    <p>+88015-88888-9999</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Account</h3>
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Login / Register</a></li>
+                        <li><a href="#">Cart</a></li>
+                        <li><a href="/wishlist.html">Wishlist</a></li>
+                        <li><a href="#">Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Link</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms Of Use</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Download App</h3>
+                    <p>Save $3 with App New User Only</p>
+                    <div class="qr-and-badges">
+                        <div class="qr-code">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Qr-2.png" alt="QR Code">
+                        </div>
+                        <div class="store-badges">
+                            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+                        </div>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Copyright Rimel 2022. All right reserved</p>
+            </div>
+        </div>
+    </footer>
+ <script>
+const userId = localStorage.getItem("userId");
+
+if (userId) {
+    console.log("User is logged in:", userId);
+
+    // Example: change "Sign Up" to "My Account"
+    const signupLink = document.querySelector('a[href="singnup.html"]');
+    if (signupLink) {
+        signupLink.innerText = "My Account";
+        signupLink.href = "account.html";
+    }
+}
+</script>
+
+    <script src="js/countdown.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
