@@ -17,6 +17,12 @@ const orderRoutes = require("./routes/orderRoutes");
 const app = express();
 app.use(cors());                // allow cross-origin requests
 app.use(express.json());        // parse JSON bodies
+app.use(express.urlencoded({ extended: true })); // parse URL-encoded bodies
+
+// Configure EJS as view engine
+app.set('view engine', 'ejs');
+app.set('views', './views');
+app.use(express.static('../frontend')); // Serve static files from frontend directory
 
 // CONNECT TO MONGODB COMPASS
 mongoose.connect("mongodb://localhost:27017/campuskart", {
@@ -34,6 +40,20 @@ mongoose.connect("mongodb://localhost:27017/campuskart", {
     });
 
 // ROUTES
+// View routes (EJS templates)
+app.get('/', (req, res) => {
+    res.render('index', { activePage: 'home' });
+});
+
+app.get('/about', (req, res) => {
+    res.render('about', { activePage: 'about' });
+});
+
+app.get('/contact', (req, res) => {
+    res.render('contact', { activePage: 'contact' });
+});
+
+// API routes
 app.use('/user', userRoutes);
 app.use("/contact", contactRoutes);
 app.use("/signup", userRoutes);

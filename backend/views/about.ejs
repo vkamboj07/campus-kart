@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusKart - About Us</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <%- include('partials/top-header') %>
+    <%- include('partials/header-nav', { activePage: 'about' }) %>
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <span>Home / About</span>
+        </div>
+    </div>
+
+    <!-- Our Story Section -->
+    <section class="our-story">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>Our Story</h2>
+                    <p>CampusKart was born from the idea that every student deserves easy access to the tools and resources that make learning simple and affordable. We understand the struggle of finding quality study materials, gadgets, and stationery at the right price.</p>
+                    <p>Our platform serves as a one-stop destination where students can shop for books, tools, accessories, and other items with confidence. We believe in supporting students in their academic journey by offering quality products, hassle-free shopping, and a community that cares.</p>
+                </div>
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop" alt="Students with shopping bags">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🏢</div>
+                    <div class="stat-number">10.5k</div>
+                    <div class="stat-label">Student active in our site</div>
+                </div>
+                <div class="stat-card featured">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-number">33k</div>
+                    <div class="stat-label">Monthly Product Sold</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number">45.5k</div>
+                    <div class="stat-label">Customer active in our site</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🛍️</div>
+                    <div class="stat-number">25k</div>
+                    <div class="stat-label">Annual gross sales in our site</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200&h=200&fit=crop" alt="Prashast">
+                    <h3>Prashast</h3>
+                    <p>Founder & Chairman</p>
+                    <div class="social-links">
+                        <span>🌐</span>
+                        <span>🐦</span>
+                        <span>💼</span>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200&h=200&fit=crop" alt="Vaibhav Kamboj">
+                    <h3>Vaibhav Kamboj</h3>
+                    <p>Managing Director</p>
+                    <div class="social-links">
+                        <span>🌐</span>
+                        <span>🐦</span>
+                        <span>💼</span>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200&h=200&fit=crop" alt="Tanmay Kandwal">
+                    <h3>Tanmay Kandwal</h3>
+                    <p>Product Designer</p>
+                    <div class="social-links">
+                        <span>🌐</span>
+                        <span>🐦</span>
+                        <span>💼</span>
+                    </div>
+                </div>
+            </div>
+            <div class="team-pagination">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>SECURE CONNECTIONS</h3>
+                    <p>All transactions are secured by us.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎧</div>
+                    <h3>24/7 CUSTOMER SERVICE</h3>
+                    <p>Friendly 24/7 customer support.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>SAFE TRANSACTIONS</h3>
+                    <p>Your money is safe with us.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
+
