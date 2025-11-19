@@ -47,13 +47,15 @@
                     </div>
                     <div class="header-icons">
                         <a href="./wishlist.html" style="text-decoration: none;">                        
-                            <span class="icon">❤️</span>
+                            <span class="icon wishlist-icon">❤️ <span class="badge" style="display: none;">0</span></span>
                         </a>
-                        <span class="icon">🛒</span>
+                        <a href="./cart.html" style="text-decoration: none;">
+                            <span class="icon cart-icon">🛒 <span class="badge" style="display: none;">0</span></span>
+                        </a>
                         <div class="profile-dropdown">
                             <span class="icon profile-icon">👤</span>
                             <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">
+                                <a href="account.html" class="dropdown-item" id="manage-account-link">
                                     <span class="dropdown-icon">👤</span>
                                     Manage My Account
                                 </a>
@@ -69,7 +71,7 @@
                                     <span class="dropdown-icon">⭐</span>
                                     My Reviews
                                 </a>
-                                <a href="#" class="dropdown-item">
+                                <a href="#" class="dropdown-item" id="logout-link">
                                     <span class="dropdown-icon">🚪</span>
                                     Logout
                                 </a>
@@ -834,18 +836,33 @@
         </div>
     </footer>
  <script>
-const userId = localStorage.getItem("userId");
-
-if (userId) {
-    console.log("User is logged in:", userId);
-
-    // Example: change "Sign Up" to "My Account"
-    const signupLink = document.querySelector('a[href="singnup.html"]');
-    if (signupLink) {
-        signupLink.innerText = "My Account";
-        signupLink.href = "account.html";
-    }
+// Keep Sign Up link always pointing to login page
+const signupLink = document.querySelector('a[href="singnup.html"]');
+if (signupLink) {
+    signupLink.innerText = "Sign Up";
+    signupLink.href = "login.html";
 }
+
+// Handle "Manage My Account" click - check if logged in
+document.getElementById("manage-account-link")?.addEventListener("click", function(e) {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+        e.preventDefault();
+        alert("Please login first to manage your account!");
+        window.location.href = "login.html";
+    }
+    // If logged in, allow navigation to account.html (edit profile section)
+});
+
+// Handle logout
+document.getElementById("logout-link")?.addEventListener("click", function(e) {
+    e.preventDefault();
+    if (confirm("Are you sure you want to logout?")) {
+        localStorage.removeItem("userId");
+        alert("Logged out successfully!");
+        window.location.href = "index.html";
+    }
+});
 </script>
 
     <script src="js/countdown.js"></script>

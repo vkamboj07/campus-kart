@@ -59,9 +59,36 @@ if (wishlist.length === 0) {
 
       card.remove();
 
+      // Update count display
+      countElem.textContent = `Wishlist (${wishlist.length})`;
+
+      // Update badge in header
+      updateWishlistBadge();
+
       if (wishlist.length === 0) {
-        container.innerHTML = "<p>Your wishlist is empty.</p>";
+        container.innerHTML = `
+          <div class="empty-wishlist">
+            <p>Your wishlist is empty 😔</p>
+            <a href="index.html" class="go-shop-btn">Go Back to Shop</a>
+          </div>
+        `;
+        countElem.textContent = `Wishlist (0)`;
       }
     }
   });
+
+  // Function to update wishlist badge globally
+  function updateWishlistBadge() {
+    const wishlistItems = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const badges = document.querySelectorAll(".wishlist-icon .badge");
+    badges.forEach(badge => {
+      if (badge) {
+        badge.textContent = wishlistItems.length;
+        badge.style.display = wishlistItems.length > 0 ? "flex" : "none";
+      }
+    });
+  }
+
+  // Initialize badge on page load
+  updateWishlistBadge();
 });

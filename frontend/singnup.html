@@ -176,28 +176,66 @@ document.querySelector("form").addEventListener("submit", async function(event) 
     const email = document.querySelector('input[name="email"]').value;
     const password = document.querySelector('input[name="password"]').value;
 
+    // Validate inputs
+    if (!name || !email || !password) {
+        alert("Please fill in all fields!");
+        return;
+    }
+
+    if (password.length < 6) {
+        alert("Password must be at least 6 characters long!");
+        return;
+    }
+
     const formData = { name, email, password };
 
-    // SEND to backend
-    const response = await fetch("http://localhost:5000/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-    });
+    const btn = document.querySelector(".create-account-btn");
+    const originalText = btn.textContent;
+    btn.textContent = "Creating Account...";
+    btn.disabled = true;
 
-    const result = await response.json();
-    console.log("Signup Saved:", result);
+    try {
+        // SEND to backend - save to MongoDB
+        const response = await fetch("http://localhost:5000/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        });
 
-    if (result.userId) {
-        // ⭐ SAVE LOGIN SESSION
-        localStorage.setItem("userId", result.userId);
+        const result = await response.json();
+        console.log("Signup Response:", result);
 
-        // ⭐ REDIRECT TO HOME PAGE
-        window.location.href = "index.html";
-    } else {
-        alert("Signup failed!");
+        if (response.ok && result.userId) {
+            // ⭐ SAVE LOGIN SESSION
+            localStorage.setItem("userId", result.userId);
+            alert("Signup successful! Welcome to CampusKart!");
+            // ⭐ REDIRECT TO ACCOUNT PAGE TO VIEW PROFILE
+            window.location.href = "account.html";
+        } else {
+            alert(result.msg || "Signup failed! Please try again.");
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }
+    } catch (error) {
+        console.error("Signup error:", error);
+        alert("Signup failed. Please check if the server is running and try again.");
+        btn.textContent = originalText;
+        btn.disabled = false;
     }
 });
+</script>
+
+<script>
+// Update navigation based on login status
+const userId = localStorage.getItem("userId");
+if (userId) {
+    // Keep Sign Up link pointing to login page
+    const signupLink = document.querySelector('a[href="singnup.html"]');
+    if (signupLink) {
+        signupLink.innerText = "Sign Up";
+        signupLink.href = "login.html";
+    }
+}
 </script>
 
 </body>

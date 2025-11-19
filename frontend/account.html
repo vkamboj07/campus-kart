@@ -37,7 +37,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="about.html">About</a></li>
-                        <li><a href="singnup.html">Sign Up</a></li>
+                        <li><a href="login.html">Sign Up</a></li>
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -46,8 +46,12 @@
                         <span class="search-icon">🔍</span>
                     </div>
                     <div class="header-icons">
-                        <span class="icon wishlist-icon">❤️ <span class="badge">1</span></span>
-                        <span class="icon cart-icon">🛒 <span class="badge">0</span></span>
+                        <a href="./wishlist.html" style="text-decoration: none;">
+                            <span class="icon wishlist-icon">❤️ <span class="badge" style="display: none;">0</span></span>
+                        </a>
+                        <a href="./cart.html" style="text-decoration: none;">
+                            <span class="icon cart-icon">🛒 <span class="badge" style="display: none;">0</span></span>
+                        </a>
                         <span class="icon user-icon">👤</span>
                     </div>
                 </div>
@@ -102,23 +106,23 @@
                         
                         <div class="form-row">
                             <div class="form-group">
-                                <label>First Name</label>
-                                <input type="text" value="Navyum">
+                                <label>Name</label>
+                                <input type="text" id="profile-name" value="">
                             </div>
                             <div class="form-group">
-                                <label>Last Name</label>
-                                <input type="text" value="-">
+                                <label>Email</label>
+                                <input type="email" id="profile-email" value="">
                             </div>
                         </div>
                         
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" value="nouyumg@gmail.com">
+                                <label>Address</label>
+                                <input type="text" id="profile-address" value="" placeholder="Enter your address">
                             </div>
                             <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" value="123, Srinagar, India">
+                                <label>Phone</label>
+                                <input type="text" id="profile-phone" value="" placeholder="Enter your phone">
                             </div>
                         </div>
                         
@@ -127,23 +131,23 @@
                             
                             <div class="form-group">
                                 <label>Current Password</label>
-                                <input type="password" placeholder="Current Passwod">
+                                <input type="password" id="current-password" placeholder="Current Password">
                             </div>
                             
                             <div class="form-group">
                                 <label>New Password</label>
-                                <input type="password" placeholder="New Passwod">
+                                <input type="password" id="new-password" placeholder="New Password">
                             </div>
                             
                             <div class="form-group">
                                 <label>Confirm New Password</label>
-                                <input type="password" placeholder="Confirm New Passwod">
+                                <input type="password" id="confirm-password" placeholder="Confirm New Password">
                             </div>
                         </div>
                         
                         <div class="form-actions">
                             <button class="cancel-btn">Cancel</button>
-                            <button class="save-btn">Save Changes</button>
+                            <button class="save-btn" id="save-profile-btn">Save Changes</button>
                         </div>
                     </div>
                 </div>
@@ -216,5 +220,243 @@
             </div>
         </div>
     </footer>
+
+<script>
+let currentUserData = {};
+
+// Load user data when page loads (READ operation)
+async function loadUserData() {
+    const userId = localStorage.getItem("userId");
+    
+    if (!userId) {
+        // If not logged in, redirect to login page
+        window.location.href = "login.html";
+        return;
+    }
+
+    try {
+        // Fetch user data from backend
+        const response = await fetch(`http://localhost:5000/user/${userId}`);
+        const userData = await response.json();
+
+        if (userData) {
+            currentUserData = userData;
+            
+            // Populate form fields with user data
+            document.getElementById("profile-name").value = userData.name || "";
+            document.getElementById("profile-email").value = userData.email || "";
+            document.getElementById("profile-address").value = userData.address || "";
+            document.getElementById("profile-phone").value = userData.phone || "";
+            
+            // Update welcome message
+            const usernameElement = document.querySelector(".username");
+            if (usernameElement) {
+                usernameElement.textContent = userData.name || "User";
+            }
+        }
+    } catch (error) {
+        console.error("Error loading user data:", error);
+        alert("Failed to load user data. Please try again.");
+    }
+}
+
+// Update profile (UPDATE operation)
+document.getElementById("save-profile-btn").addEventListener("click", async function() {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+        alert("Please login first!");
+        window.location.href = "login.html";
+        return;
+    }
+
+    const name = document.getElementById("profile-name").value;
+    const email = document.getElementById("profile-email").value;
+    const address = document.getElementById("profile-address").value;
+    const phone = document.getElementById("profile-phone").value;
+    const currentPassword = document.getElementById("current-password").value;
+    const newPassword = document.getElementById("new-password").value;
+    const confirmPassword = document.getElementById("confirm-password").value;
+
+    // Validation
+    if (!name || !email) {
+        alert("Name and Email are required!");
+        return;
+    }
+
+    if (newPassword) {
+        if (newPassword !== confirmPassword) {
+            alert("New passwords do not match!");
+            return;
+        }
+        if (!currentPassword) {
+            alert("Please enter current password to change it!");
+            return;
+        }
+    }
+
+    try {
+        // Verify current password if changing password
+        if (newPassword && currentPassword) {
+            if (currentUserData.password !== currentPassword) {
+                alert("Current password is incorrect!");
+                return;
+            }
+        }
+
+        // Prepare update data
+        const updateData = {
+            name: name,
+            email: email
+        };
+
+        // Add optional fields if provided
+        if (address) updateData.address = address;
+        if (phone) updateData.phone = phone;
+
+        // If password is being changed, include it
+        if (newPassword && currentPassword) {
+            updateData.password = newPassword;
+        }
+
+        // UPDATE operation - Update user in MongoDB
+        const response = await fetch(`http://localhost:5000/user/${userId}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(updateData)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            if (newPassword) {
+                alert("Profile and password updated successfully in MongoDB!");
+            } else {
+                alert("Profile updated successfully in MongoDB!");
+            }
+            
+            // Reload user data to reflect changes
+            await loadUserData();
+            
+            // Clear password fields
+            document.getElementById("current-password").value = "";
+            document.getElementById("new-password").value = "";
+            document.getElementById("confirm-password").value = "";
+        } else {
+            alert(result.msg || "Failed to update profile!");
+        }
+    } catch (error) {
+        console.error("Update error:", error);
+        alert("Failed to update profile. Please check if the server is running and try again.");
+    }
+});
+
+// Cancel button - Reset form
+document.querySelector(".cancel-btn").addEventListener("click", function() {
+    if (confirm("Are you sure you want to cancel? All unsaved changes will be lost.")) {
+        loadUserData(); // Reload original data
+        document.getElementById("current-password").value = "";
+        document.getElementById("new-password").value = "";
+        document.getElementById("confirm-password").value = "";
+    }
+});
+
+// Delete account (DELETE operation)
+function deleteAccount() {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+        alert("Please login first!");
+        return;
+    }
+
+    if (confirm("Are you sure you want to delete your account? This action cannot be undone!")) {
+        if (confirm("This will permanently delete all your data. Are you absolutely sure?")) {
+            fetch(`http://localhost:5000/user/${userId}`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => {
+                        throw new Error(err.msg || "Failed to delete account");
+                    });
+                }
+                return response.json();
+            })
+            .then(result => {
+                if (result.msg && result.deleted) {
+                    alert("Account deleted successfully from MongoDB!");
+                    localStorage.removeItem("userId");
+                    localStorage.removeItem("cart");
+                    localStorage.removeItem("wishlist");
+                    window.location.href = "index.html";
+                } else {
+                    alert("Failed to delete account!");
+                }
+            })
+            .catch(error => {
+                console.error("Delete error:", error);
+                alert("Failed to delete account: " + error.message);
+            });
+        }
+    }
+}
+
+// Add delete button
+setTimeout(() => {
+    if (!document.getElementById("delete-account-btn")) {
+        const deleteBtn = document.createElement("button");
+        deleteBtn.id = "delete-account-btn";
+        deleteBtn.className = "delete-btn";
+        deleteBtn.textContent = "Delete Account";
+        deleteBtn.style.cssText = "background-color: #dc3545; color: white; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; font-weight: 500; font-size: 16px; margin-top: 20px; transition: all 0.3s;";
+        deleteBtn.onmouseover = function() { this.style.backgroundColor = "#c82333"; };
+        deleteBtn.onmouseout = function() { this.style.backgroundColor = "#dc3545"; };
+        deleteBtn.onclick = deleteAccount;
+        document.querySelector(".form-actions").appendChild(deleteBtn);
+    }
+}, 100);
+
+// Update navigation based on login status
+const userId = localStorage.getItem("userId");
+if (userId) {
+    // Keep Sign Up link pointing to login page
+    const signupLink = document.querySelector('a[href="login.html"]');
+    if (signupLink) {
+        signupLink.innerText = "Sign Up";
+        signupLink.href = "login.html";
+    }
+}
+
+// Load user data when page loads
+loadUserData();
+
+// Update badges on page load
+function updateAllBadges() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    
+    // Update cart badge
+    const cartBadges = document.querySelectorAll(".cart-icon .badge");
+    const cartTotal = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartBadges.forEach(badge => {
+        if (badge) {
+            badge.textContent = cartTotal;
+            badge.style.display = cartTotal > 0 ? "flex" : "none";
+        }
+    });
+    
+    // Update wishlist badge
+    const wishlistBadges = document.querySelectorAll(".wishlist-icon .badge");
+    wishlistBadges.forEach(badge => {
+        if (badge) {
+            badge.textContent = wishlist.length;
+            badge.style.display = wishlist.length > 0 ? "flex" : "none";
+        }
+    });
+}
+
+updateAllBadges();
+</script>
+
 </body>
 </html>

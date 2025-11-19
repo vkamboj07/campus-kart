@@ -80,26 +80,45 @@
     background-color: #e74c3c;
     color: white;
     border: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 4px;
+    width: 35px;
+    height: 35px;
+    border-radius: 6px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .qty-btn:hover {
     background-color: #c0392b;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.qty-btn:active {
+    transform: scale(0.95);
 }
 
 .quantity input {
-    width: 60px;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    width: 70px;
+    padding: 10px;
+    border: 2px solid #e74c3c;
+    border-radius: 6px;
     text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.quantity input:focus {
+    outline: none;
+    border-color: #c0392b;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
 }
 
 .subtotal {
@@ -238,6 +257,21 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
+}
+
+.remove-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.remove-btn:hover {
+    background: #c0392b;
 }
 
 /* Responsive Design */

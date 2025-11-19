@@ -3,22 +3,41 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+// Verify environment variables
+if (!process.env.RESEND_API_KEY) {
+    console.warn("⚠️  WARNING: RESEND_API_KEY not found in .env file");
+    console.warn("   Email functionality will not work without API key");
+    console.warn("   Please create .env file with RESEND_API_KEY");
+}
+
 const contactRoutes = require("./routes/contactRoutes");
 const userRoutes = require("./routes/userRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 const app = express();
-
-app.use(cors());
-app.use(express.json());
+app.use(cors());                // allow cross-origin requests
+app.use(express.json());        // parse JSON bodies
 
 // CONNECT TO MONGODB COMPASS
-mongoose.connect("mongodb://localhost:27017/campuskart")
-    .then(() => console.log("MongoDB Connected"))
-    .catch(err => console.log(err));
+mongoose.connect("mongodb://localhost:27017/campuskart", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+    .then(() => {
+        console.log("✅ MongoDB Connected Successfully!");
+        console.log("Database: campuskart");
+        console.log("Collections: users, orders, contacts");
+    })
+    .catch(err => {
+        console.error("❌ MongoDB Connection Error:", err);
+        console.log("Please make sure MongoDB is running on localhost:27017");
+    });
 
 // ROUTES
+app.use('/user', userRoutes);
 app.use("/contact", contactRoutes);
 app.use("/signup", userRoutes);
+app.use("/orders", orderRoutes);
 
 // START SERVER
 app.listen(5000, () =>

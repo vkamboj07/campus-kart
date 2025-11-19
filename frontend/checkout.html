@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusKart - Checkout</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-content">
+                <span class="promo-text">Back to college sale upto 50% OFF on your first rent</span>
+                <div class="top-header-right">
+                    <span class="rent-now">Rent Now</span>
+                    <div class="language-selector">
+                        <span>English</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>CampusKart</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="login.html">Sign Up</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <input type="text" placeholder="What are you looking for?">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <div class="header-icons">
+                        <a href="./wishlist.html" style="text-decoration: none;">                        
+                            <span class="icon wishlist-icon">❤️ <span class="badge" style="display: none;">0</span></span>
+                        </a>
+                        <a href="./cart.html" style="text-decoration: none;">
+                            <span class="icon cart-icon">🛒 <span class="badge" style="display: none;">0</span></span>
+                        </a>
+                        <div class="profile-dropdown">
+                            <span class="icon profile-icon">👤</span>
+                            <div class="dropdown-menu">
+                                <a href="account.html" class="dropdown-item">
+                                    <span class="dropdown-icon">👤</span>
+                                    Manage My Account
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <span>Home / Cart / Checkout</span>
+        </div>
+    </div>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-content">
+                <div class="checkout-form-container">
+                    <h2>Shipping Information</h2>
+                    <form id="checkoutForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name *</label>
+                                <input type="text" id="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name *</label>
+                                <input type="text" id="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Address *</label>
+                            <input type="text" id="address" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>City *</label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label>State *</label>
+                                <input type="text" id="state" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Postal Code *</label>
+                                <input type="text" id="postalCode" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Country *</label>
+                                <input type="text" id="country" value="India" required>
+                            </div>
+                        </div>
+                        
+                        <h3 style="margin-top: 30px;">Payment Method</h3>
+                        <div class="payment-methods">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="card" checked>
+                                <span>Credit/Debit Card</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="upi">
+                                <span>UPI</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="cod">
+                                <span>Cash on Delivery</span>
+                            </label>
+                        </div>
+                        
+                        <div id="cardDetails" class="card-details">
+                            <div class="form-group">
+                                <label>Card Number *</label>
+                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Expiry Date *</label>
+                                    <input type="text" id="expiry" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label>CVV *</label>
+                                    <input type="text" id="cvv" placeholder="123" maxlength="3">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="place-order-btn">Place Order</button>
+                    </form>
+                </div>
+                
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="order-items"></div>
+                    <div class="summary-totals">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="summary-subtotal">₹0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping:</span>
+                            <span>Free</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total:</span>
+                            <span id="summary-total">₹0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Exclusive</h3>
+                    <p class="footer-subtitle">About Us</p>
+                    <p>We provide the best campus essentials at student-friendly prices.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Copyright Rimel 2022. All right reserved</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+// Email functionality is handled by backend using Resend
+// No frontend email initialization needed
+
+// Load cart items
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let orderData = {};
+
+// Display order items
+function displayOrderItems() {
+    const container = document.getElementById("order-items");
+    if (cart.length === 0) {
+        window.location.href = "cart.html";
+        return;
+    }
+    
+    container.innerHTML = cart.map(item => `
+        <div class="order-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="item-details">
+                <h4>${item.name}</h4>
+                <p>Quantity: ${item.quantity}</p>
+            </div>
+            <span class="item-price">₹${item.price * item.quantity}</span>
+        </div>
+    `).join('');
+    
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    document.getElementById("summary-subtotal").textContent = `₹${subtotal}`;
+    document.getElementById("summary-total").textContent = `₹${subtotal}`;
+}
+
+// Payment method toggle
+document.querySelectorAll('input[name="payment"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        const cardDetails = document.getElementById("cardDetails");
+        if (this.value === "card") {
+            cardDetails.style.display = "block";
+        } else {
+            cardDetails.style.display = "none";
+        }
+    });
+});
+
+// Format card number
+document.getElementById("cardNumber")?.addEventListener("input", function(e) {
+    let value = e.target.value.replace(/\s/g, "");
+    let formattedValue = value.match(/.{1,4}/g)?.join(" ") || value;
+    e.target.value = formattedValue;
+});
+
+// Format expiry date
+document.getElementById("expiry")?.addEventListener("input", function(e) {
+    let value = e.target.value.replace(/\D/g, "");
+    if (value.length >= 2) {
+        value = value.substring(0, 2) + "/" + value.substring(2, 4);
+    }
+    e.target.value = value;
+});
+
+// Handle form submission
+document.getElementById("checkoutForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    
+    const formData = {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        address: document.getElementById("address").value,
+        city: document.getElementById("city").value,
+        state: document.getElementById("state").value,
+        postalCode: document.getElementById("postalCode").value,
+        country: document.getElementById("country").value,
+        paymentMethod: document.querySelector('input[name="payment"]:checked').value,
+        items: cart,
+        total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+        orderId: "ORD" + Date.now()
+    };
+    
+    orderData = formData;
+    
+    // Show payment processing
+    const btn = document.querySelector(".place-order-btn");
+    btn.textContent = "Processing...";
+    btn.disabled = true;
+    
+    // Simulate payment processing
+    setTimeout(() => {
+        processOrder(formData);
+    }, 2000);
+});
+
+// Process order
+async function processOrder(orderData) {
+    try {
+        // Save order to backend (MongoDB)
+        const response = await fetch("http://localhost:5000/orders", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(orderData)
+        });
+        
+        const result = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(result.msg || "Failed to save order");
+        }
+        
+        console.log("Order saved to MongoDB:", result);
+        
+        // Generate and download PDF confirmation
+        generatePDFConfirmation(orderData);
+        
+        // Clear cart
+        localStorage.removeItem("cart");
+        
+        // Show success message
+        alert("Order placed successfully! PDF confirmation downloaded. Order saved to database.");
+        
+        // Redirect to success page
+        window.location.href = "order-success.html?orderId=" + orderData.orderId;
+    } catch (error) {
+        console.error("Order processing error:", error);
+        alert("Failed to process order: " + error.message + "\nPlease try again.");
+        const btn = document.querySelector(".place-order-btn");
+        btn.textContent = "Place Order";
+        btn.disabled = false;
+    }
+}
+
+// Generate and download PDF confirmation
+function generatePDFConfirmation(orderData) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Set font and colors
+    const primaryColor = [231, 76, 60]; // #e74c3c
+    const darkColor = [44, 62, 80]; // #2c3e50
+    
+    // Header
+    doc.setFillColor(...primaryColor);
+    doc.rect(0, 0, 210, 40, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(24);
+    doc.setFont('helvetica', 'bold');
+    doc.text('CAMPUSKART', 105, 20, { align: 'center' });
+    doc.setFontSize(14);
+    doc.text('Order Confirmation', 105, 30, { align: 'center' });
+    
+    // Reset text color
+    doc.setTextColor(...darkColor);
+    doc.setFont('helvetica', 'normal');
+    
+    let yPos = 50;
+    
+    // Order Details Section
+    doc.setFontSize(16);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Order Details', 20, yPos);
+    yPos += 10;
+    
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'normal');
+    doc.text(`Order ID: ${orderData.orderId}`, 20, yPos);
+    yPos += 6;
+    doc.text(`Order Date: ${new Date().toLocaleString()}`, 20, yPos);
+    yPos += 6;
+    doc.text(`Payment Method: ${orderData.paymentMethod.toUpperCase()}`, 20, yPos);
+    yPos += 15;
+    
+    // Shipping Address Section
+    doc.setFontSize(16);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Shipping Address', 20, yPos);
+    yPos += 10;
+    
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'normal');
+    doc.text(`${orderData.firstName} ${orderData.lastName}`, 20, yPos);
+    yPos += 6;
+    doc.text(orderData.address, 20, yPos);
+    yPos += 6;
+    doc.text(`${orderData.city}, ${orderData.state} ${orderData.postalCode}`, 20, yPos);
+    yPos += 6;
+    doc.text(orderData.country, 20, yPos);
+    yPos += 6;
+    doc.text(`Phone: ${orderData.phone}`, 20, yPos);
+    yPos += 6;
+    doc.text(`Email: ${orderData.email}`, 20, yPos);
+    yPos += 15;
+    
+    // Order Items Section
+    doc.setFontSize(16);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Order Items', 20, yPos);
+    yPos += 10;
+    
+    // Table header
+    doc.setFillColor(245, 245, 245);
+    doc.rect(20, yPos - 5, 170, 8, 'F');
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Item', 25, yPos);
+    doc.text('Quantity', 100, yPos);
+    doc.text('Price', 140, yPos);
+    doc.text('Total', 170, yPos);
+    yPos += 8;
+    
+    // Items
+    doc.setFont('helvetica', 'normal');
+    orderData.items.forEach((item, index) => {
+        if (yPos > 250) {
+            doc.addPage();
+            yPos = 20;
+        }
+        
+        const itemTotal = item.price * item.quantity;
+        doc.setFontSize(10);
+        doc.text(item.name.substring(0, 30), 25, yPos);
+        doc.text(item.quantity.toString(), 100, yPos);
+        doc.text(`₹${item.price}`, 140, yPos);
+        doc.text(`₹${itemTotal}`, 170, yPos);
+        yPos += 7;
+    });
+    
+    yPos += 10;
+    
+    // Total Section
+    doc.setDrawColor(...primaryColor);
+    doc.setLineWidth(0.5);
+    doc.line(20, yPos, 190, yPos);
+    yPos += 8;
+    
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Subtotal:', 140, yPos);
+    doc.text(`₹${orderData.total}`, 170, yPos);
+    yPos += 8;
+    
+    doc.setFont('helvetica', 'normal');
+    doc.text('Shipping:', 140, yPos);
+    doc.text('Free', 170, yPos);
+    yPos += 8;
+    
+    doc.setDrawColor(...primaryColor);
+    doc.setLineWidth(1);
+    doc.line(140, yPos, 190, yPos);
+    yPos += 8;
+    
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...primaryColor);
+    doc.text('Total:', 140, yPos);
+    doc.text(`₹${orderData.total}`, 170, yPos);
+    yPos += 15;
+    
+    // Footer
+    doc.setTextColor(...darkColor);
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    doc.text('Thank you for your order!', 105, yPos, { align: 'center' });
+    yPos += 6;
+    doc.text('Your order will be delivered within 3-5 business days.', 105, yPos, { align: 'center' });
+    yPos += 6;
+    doc.text('If you have any questions, please contact our support team.', 105, yPos, { align: 'center' });
+    yPos += 15;
+    
+    doc.setFontSize(8);
+    doc.setTextColor(128, 128, 128);
+    doc.text('© 2024 CampusKart. All rights reserved.', 105, yPos, { align: 'center' });
+    
+    // Save PDF
+    doc.save(`Order-Confirmation-${orderData.orderId}.pdf`);
+}
+
+// Update badges
+function updateBadges() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    
+    const cartBadges = document.querySelectorAll(".cart-icon .badge");
+    cartBadges.forEach(badge => {
+        const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+        badge.textContent = total;
+        badge.style.display = total > 0 ? "flex" : "none";
+    });
+    
+    const wishlistBadges = document.querySelectorAll(".wishlist-icon .badge");
+    wishlistBadges.forEach(badge => {
+        badge.textContent = wishlist.length;
+        badge.style.display = wishlist.length > 0 ? "flex" : "none";
+    });
+}
+
+// Initialize
+displayOrderItems();
+updateBadges();
+</script>
+
+</body>
+</html>
+
